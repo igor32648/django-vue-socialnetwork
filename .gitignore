@@ -1,0 +1,4 @@
+env/
+django_goiaba/*.pyc
+django_goiaba/*/*.pyc
+django_goiaba/*/*/*.pyc

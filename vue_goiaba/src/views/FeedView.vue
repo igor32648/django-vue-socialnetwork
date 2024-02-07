@@ -21,9 +21,9 @@
                 </div>
 
                 <div class="p-4 border-t border-gray-100 flex justify-between">
-                    <a href="#" class="inline-block py-4 px-6 bg-gray-600 text-white rounded-lg">Attach image</a>
+                    <a href="#" class="inline-block py-4 px-6 bg-gray-600 text-white">Attach image</a>
 
-                    <a href="#" class="inline-block py-4 px-6 bg-pink-600 text-white rounded-lg">Post</a>
+                    <a href="#" class="inline-block py-4 px-6 bg-pink-600 text-white">Post</a>
                 </div>
             </div>
 
@@ -115,4 +115,17 @@
         </div>
     </div>
 </template>
+
+<script>
+import PeopleYouMayKnow from '../components/PeopleYouMayKnow.vue'
+import Trends from '../components/Trends.vue'
+
+export default {
+    name: 'FeedView',
+    components: {
+        PeopleYouMayKnow,
+        Trends,
+    }
+}
+</script>
 

@@ -9,7 +9,7 @@ def signup(request):
     data = request.data
     message = 'success'
     
-    form =SignupForm({
+    form = SignupForm({
         'email': data.get('email'),
         'name': data.get('name'),
         'password1': data.get('password1'),
@@ -19,6 +19,7 @@ def signup(request):
     if form.is_valid():
         form.save()
     else:
-        message = 'error'
+        message = form.errors
+        print(form.errors)
     
-    return JsonResponse({'status': message})
+    return JsonResponse({'message': message})

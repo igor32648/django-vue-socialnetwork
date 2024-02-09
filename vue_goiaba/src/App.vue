@@ -34,9 +34,9 @@
 
               <div class="menu-right">
                     <template v-if="userStore.user.isAuthenticated">
-                        <a href="#">
+                        <RouterLink :to="{name: 'profile', params:{'id': userStore.user.id}}">                            
                             <img src="https://images.fineartamerica.com/images-medium-large-5/oh-the-face-of-a-chicken-cheryl-burkhardt.jpg" class="rounded-full w-12 h-12">
-                        </a>
+                        </RouterLink>
                     </template>
 
                     <template v-else>

@@ -1,30 +1,18 @@
 <template>
     <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
-        <div class="main-left col-span-1">
-            <div class="p-4 bg-white border border-gray-200 text-center rounded-lg">
-                <img src="https://images.fineartamerica.com/images-medium-large-5/oh-the-face-of-a-chicken-cheryl-burkhardt.jpg" 
-                class="mb-6  rounded-full w-21 h-21 object-cover">
-                
-                <p><strong>Chicken Igor</strong></p>
-
-                <div class="mt-6 flex space-x-8 justify-around">
-                    <p class="text-xs text-gray-500">182 friends</p>
-                    <p class="text-xs text-gray-500">120 posts</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="main-center col-span-2 space-y-4">
+        <div class="main-center col-span-3 space-y-4">
             <div class="bg-white border border-gray-200 rounded-lg">
-                <div class="p-4">  
-                    <textarea class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you thinking about?"></textarea>
-                </div>
+                <form v-on:submit.prevent="submitForm" method="post">
+                    <div class="p-4">  
+                        <textarea v-model="body" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What are you thinking about?"></textarea>
+                    </div>
 
-                <div class="p-4 border-t border-gray-100 flex justify-between">
-                    <a href="#" class="inline-block py-4 px-6 bg-gray-600 text-white">Attach image</a>
+                    <div class="p-4 border-t border-gray-100 flex justify-between">
+                        <a href="#" class="inline-block py-4 px-6 bg-gray-600 text-white rounded-lg">Attach image</a>
 
-                    <a href="#" class="inline-block py-4 px-6 bg-pink-600 text-white">Post</a>
-                </div>
+                        <button class="inline-block py-4 px-6 bg-pink-600 text-white rounded-lg">Post</button>
+                    </div>
+                </form>
             </div>
 
             <div 

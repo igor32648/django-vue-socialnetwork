@@ -8,9 +8,9 @@
                     </div>
 
                     <div class="p-4 border-t border-gray-100 flex justify-between">
-                        <a href="#" class="inline-block py-4 px-6 bg-gray-600 text-white rounded-lg">Attach image</a>
+                        <a href="#" class="inline-block py-4 px-6 bg-gray-600 text-white">Attach image</a>
 
-                        <button class="inline-block py-4 px-6 bg-pink-600 text-white rounded-lg">Post</button>
+                        <button class="inline-block py-4 px-6 bg-pink-600 text-white">Post</button>
                     </div>
                 </form>
             </div>

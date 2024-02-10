@@ -1,7 +1,7 @@
 <template>
     <div class="mb-6 flex items-center justify-between">
         <div class="flex items-center space-x-6">
-            <img src="https://i.pravatar.cc/300?img=70" class="w-[40px] rounded-full">
+            <img src="https://images.fineartamerica.com/images-medium-large-5/oh-the-face-of-a-chicken-cheryl-burkhardt.jpg" class="rounded-full w-12 h-12">
             
             <p>
                 <strong>

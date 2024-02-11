@@ -10,12 +10,12 @@
                         v-on:click="setActiveConversation(conversation.id)"
                     >
                         <div class="flex items-center space-x-2">
-                            <img src="https://i.pravatar.cc/300?img=70" class="w-[40px] rounded-full">
                             
                             <template
-                                v-for="user in conversation.users"
-                                v-bind:key="user.id"
+                            v-for="user in conversation.users"
+                            v-bind:key="user.id"
                             >
+                                <img :src="user.get_avatar" class="rounded-full w-12 h-12">
                                 <p 
                                     class="text-xs font-bold"
                                     v-if="user.id !== userStore.user.id"
@@ -41,13 +41,13 @@
                             v-if="message.created_by.id == userStore.user.id"
                         >
                             <div>
-                                <div class="bg-blue-600 text-white p-3 rounded-l-lg rounded-br-lg">
+                                <div class="bg-pink-600 text-white p-3 rounded-l-lg rounded-br-lg">
                                     <p class="text-sm">{{ message.body }}</p>
                                 </div>
                                 <span class="text-xs text-gray-500 leading-none">{{ message.created_at_formatted }} ago</span>
                             </div>
                             <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300">
-                                <img src="https://i.pravatar.cc/300?img=70" class="w-[40px] rounded-full">
+                                <img :src="message.created_by.get_avatar" class="rounded-full w-12 h-12">
                             </div>
                         </div>
 
@@ -56,7 +56,7 @@
                             v-else
                         >
                             <div class="flex-shrink-0 h-10 w-10 rounded-full bg-gray-300">
-                                <img src="https://i.pravatar.cc/300?img=70" class="w-[40px] rounded-full">
+                                <img :src="message.created_by.get_avatar" class="rounded-full w-12 h-12">
                             </div>
                             <div>
                                 <div class="bg-gray-300 p-3 rounded-r-lg rounded-bl-lg">

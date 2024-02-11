@@ -2,14 +2,13 @@
     <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
         <div class="main-left col-span-1">
             <div class="p-4 bg-white border border-gray-200 text-center rounded-lg">
-                <img src="https://images.fineartamerica.com/images-medium-large-5/oh-the-face-of-a-chicken-cheryl-burkhardt.jpg" 
-                class="mb-6  rounded-full w-21 h-21 object-cover">
+                <img :src="user.get_avatar" class="mb-6 rounded-full w-full h-full object-cover">
                 
                 <p><strong>{{ user.name }}</strong></p>
 
-                <div class="mt-6 flex space-x-8 justify-around">
+                <div class="mt-6 flex space-x-8 justify-around" v-if="user.id">
                     <RouterLink :to="{name: 'friends', params: {id: user.id}}" class="text-xs text-gray-500">{{ user.friends_count }} friends</RouterLink>
-                    <p class="text-xs text-gray-500">120 posts</p>
+                    <p class="text-xs text-gray-500">{{ user.posts_count }} posts</p>
                 </div>
                 <div class="mt-6">
                     <button 
@@ -27,6 +26,14 @@
                     >
                         Message
                     </button>
+
+                    <RouterLink 
+                        class="inline-block mr-2 py-4 px-3 bg-pink-500 text-xs text-white" 
+                        to="/profile/edit"
+                        v-if="userStore.user.id === user.id"
+                    >
+                        Edit profile
+                    </RouterLink>
 
                     <button 
                         class="inline-block py-4 px-3 bg-red-600 text-xs text-white" 
@@ -104,7 +111,7 @@ export default {
         return {
             posts: [],
             user: {
-                id: null
+                id: ''
             },
             body: '',
         }

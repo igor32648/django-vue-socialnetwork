@@ -8,6 +8,8 @@ import SearchView from '../views/SearchView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import FriendsView from '../views/FriendsView.vue'
 import PostView from '../views/PostView.vue'
+import TrendView from '../views/TrendView.vue'
+import EditProfileView from '../views/EditProfileView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +58,16 @@ const router = createRouter({
       path: '/:id',
       name: 'postview',
       component: PostView
+    },
+    {
+      path: '/trend/:id',
+      name: 'trendview',
+      component: TrendView
+    },
+    {
+      path: '/profile/edit',
+      name: 'eidtprofile',
+      component: EditProfileView
     },
     {
       path: '/about',

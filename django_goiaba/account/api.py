@@ -5,6 +5,8 @@ from .models import User, FriendshipRequest
 from .serializers import UserSerializer, FriendshipRequestSerializer
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.mail import send_mail
+from notification.utils import create_notification
+
 
 @api_view(['GET'])
 def me(request):
@@ -14,6 +16,7 @@ def me(request):
         'email': request.user.email,
         'avatar': request.user.get_avatar()
     })
+
 
 @api_view(['POST'])
 @authentication_classes([])
@@ -50,6 +53,7 @@ def signup(request):
     
     return JsonResponse({'message': message}, safe=False)
 
+
 @api_view(['GET'])
 def friends(request, pk):
     user = User.objects.get(pk=pk)
@@ -78,6 +82,8 @@ def send_friendship_request(request, pk):
 
     if not check1 or not check2:
         FriendshipRequest.objects.create(created_for=user, created_by=request.user)
+        
+        notification = create_notification(request, 'new_friendrequest', friendrequest_id=friendrequest.id)
 
         return JsonResponse({'message': 'friendship request created'})
     else:
@@ -98,8 +104,11 @@ def handle_request(request, pk, status):
     request_user = request.user
     request_user.friends_count = request_user.friends_count + 1
     request_user.save()
+    
+    notification = create_notification(request, 'accepted_friendrequest', friendrequest_id=friendship_request.id)
 
     return JsonResponse({'message': 'friendship request updated'})
+
 
 @api_view(['POST'])
 def editprofile(request):

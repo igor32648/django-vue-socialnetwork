@@ -5,6 +5,8 @@ from .serializers import PostSerializer, PostDetailSerializer, CommentSerializer
 from rest_framework.decorators import api_view
 from account.models import User
 from account.serializers import UserSerializer
+from notification.utils import create_notification
+
 
 @api_view(['GET'])
 def post_list(request):
@@ -78,6 +80,8 @@ def post_like(request, pk):
         post.likes_count = post.likes_count + 1
         post.likes.add(like)
         post.save()
+        
+        notification = create_notification(request, 'post_like', post_id=post.id)
 
         return JsonResponse({'message': 'like created'})
     else:
@@ -101,6 +105,8 @@ def post_create_comment(request, pk):
     post.comments.add(comment)
     post.comments_count = post.comments_count + 1
     post.save()
+    
+    notification = create_notification(request, 'post_comment', post_id=post.id)
 
     serializer = CommentSerializer(comment)
 

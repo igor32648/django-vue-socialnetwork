@@ -14,7 +14,7 @@
                     <button 
                         class="inline-block py-4 px-3 bg-pink-600 text-xs text-white" 
                         @click="sendFriendshipRequest"
-                        v-if="userStore.user.id !== user.id"
+                        v-if="userStore.user.id !== user.id && can_send_friendship_request"
                     >
                         Add friend
                     </button>
@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="p-4 border-t border-gray-100 flex justify-between">
-                        <label class="inline-block py-4 px-6 bg-gray-600 text-white">
+                        <label :class="'inline-block py-4 px-6 bg-gray-600 text-white'">
                             <input type="file" ref="file" @change="onFileChange">
                             Attach image
                         </label>
@@ -131,6 +131,7 @@ export default {
             user: {
                 id: ''
             },
+            can_send_friendship_request: null,
             body: '',
             url: null,
         }
@@ -176,7 +177,7 @@ export default {
                 .post(`/api/friends/${this.$route.params.id}/request/`)
                 .then(response => {
                     console.log('data', response.data)
-
+                    this.can_send_friendship_request = false
                     if (response.data.message == 'request already sent') {
                         this.toastStore.showToast(5000, 'The request has already been sent!', 'bg-red-300')
                     } else {
@@ -196,6 +197,7 @@ export default {
 
                     this.posts = response.data.posts
                     this.user = response.data.user
+                    this.can_send_friendship_request = response.data.can_send_friendship_request
                 })
                 .catch(error => {
                     console.log('error', error)

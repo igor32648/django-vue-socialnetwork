@@ -1,6 +1,7 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-4">
-        <div class="main-left">
+    <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="main-left sm:col-span-1">
             <div class="p-12 bg-white border border-gray-200 rounded-lg">
                 <h1 class="mb-6 text-2xl">Edit profile</h1>
 
@@ -12,7 +13,7 @@
             </div>
         </div>
 
-        <div class="main-right">
+        <div class="main-right col-span-1 space-y-4">
             <div class="p-12 bg-white border border-gray-200 rounded-lg">
                 <form class="space-y-6" v-on:submit.prevent="submitForm">
                     <div>
@@ -42,6 +43,7 @@
                 </form>
             </div>
         </div>
+    </div>
     </div>
 </template>
 

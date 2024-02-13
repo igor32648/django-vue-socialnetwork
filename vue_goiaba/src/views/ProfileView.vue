@@ -1,6 +1,6 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
-        <div class="main-left col-span-1">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="main-left sm:col-span-1 md:col-span-1">
             <div class="p-4 bg-white border border-gray-200 text-center rounded-lg">
                 <img :src="user.get_avatar" class="mb-6 rounded-full w-full h-full object-cover">
                 
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="main-center col-span-2 space-y-4">
+        <div class="main-center sm:col-span-2 md:col-span-2 space-y-4">
             <div 
                 class="bg-white border border-gray-200 rounded-lg"
                 v-if="userStore.user.id === user.id"
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <div class="main-right col-span-1 space-y-4">
+        <div class="main-right sm:col-span-1 md:col-span-1 space-y-4">
             <PeopleYouMayKnow />
 
             <Trends />

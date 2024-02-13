@@ -4,7 +4,7 @@
     
             <div class="space-y-4">
                 <div 
-                class="flex items-center justify-between"
+                class="flex items-center justify-between sm:flex-col md:flex-row"
                 v-for="user in users"
                 v-bind:key="user.id"
                 >                    

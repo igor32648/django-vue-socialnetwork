@@ -4,11 +4,11 @@
     
             <div class="space-y-4">
                 <div 
-                class="flex items-center justify-between"
+                class="flex items-center justify-between sm:flex-col md:flex-row"
                 v-for="trend in trends"
                 v-bind:key="trend.id"
                 >  
-                    <p class="text-xs">
+                    <p class="text-xs flex space-x-2 mb-2">
                         <strong>#{{ trend.hashtag }}</strong><br>
                         <span class="text-gray-500">{{ trend.occurences }} posts</span>
                     </p>

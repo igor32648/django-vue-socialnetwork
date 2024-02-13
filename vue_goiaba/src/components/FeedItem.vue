@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-6 flex items-center justify-between">
+    <div class="mb-6 flex items-center justify-between sm:flex-col md:flex-row">
         <div class="flex items-center space-x-6">
             <img :src="post.created_by.get_avatar" class="rounded-full w-12 h-12">
             

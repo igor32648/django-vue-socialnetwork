@@ -1,10 +1,10 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
-        <div class="main-left col-span-1">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-4">
+        <div class="main-left sm:col-span-1">
             <div class="p-4 bg-white border border-gray-200 rounded-lg">
                 <div class="space-y-4">
                     <div 
-                        class="flex items-center justify-between"
+                        class="flex items-center justify-between sm:flex-col md:flex-row"                        
                         v-for="conversation in conversations"
                         v-bind:key="conversation.id"
                         v-on:click="setActiveConversation(conversation.id)"
@@ -12,12 +12,12 @@
                         <div class="flex items-center space-x-2">
                             
                             <template
-                            v-for="user in conversation.users"
-                            v-bind:key="user.id"
+                            v-for="user in conversation.users"  :key="user.id"                        v-bind:key="user.id"
                             >
-                                <img :src="user.get_avatar" class="rounded-full w-12 h-12">
+                                <img v-if="user.id !== userStore.user.id"
+                                    :src="user.get_avatar" class="rounded-full w-12 h-12 cursor-pointer">
                                 <p 
-                                    class="text-xs font-bold"
+                                    class="text-xs font-bold cursor-pointer"
                                     v-if="user.id !== userStore.user.id"
                                 >{{ user.name }}</p>
                             </template>
@@ -29,8 +29,8 @@
             </div>
         </div>
 
-        <div class="main-center col-span-3 space-y-4">
-            <div class="bg-white border border-gray-200 rounded-lg">
+        <div class="main-center sm:col-span-3 ">
+            <div class="bg-white border border-gray-200 rounded-t-lg">
                 <div class="flex flex-col flex-grow p-4">
                     <template
                         v-for="message in activeConversation.messages"
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="bg-white border border-gray-200 rounded-lg">
+            <div class="bg-white border border-gray-200 rounded-b-lg">
                 <form v-on:submit.prevent="submitForm">
                     <div class="p-4">  
                         <textarea v-model="body" class="p-4 w-full bg-gray-100 rounded-lg" placeholder="What do you want to say?"></textarea>

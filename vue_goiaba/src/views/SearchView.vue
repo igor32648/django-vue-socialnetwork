@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-4">
         <div class="main-left col-span-3 space-y-4">
             <div class="bg-white border border-gray-200 rounded-lg">
                 <form v-on:submit.prevent="submitForm" class="p-4 flex space-x-4">  
